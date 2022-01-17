@@ -1,7 +1,6 @@
 ---
 - hosts: linuxservers
   become: true
-
   tasks:
     - name: Create dir /mnt/resource/
       ansible.builtin.file:
@@ -28,4 +27,4 @@
       delay: 1
       loop: "{{ download_loop.results }}"
       register: async_loop_jobs
-      until: async_loop_jobs.finished
+      until: async_loop_jobs.finish
